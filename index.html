@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Teachers' Day Celebration 2026 — TCET. A digital invitation for our beloved faculty." />
+  <title>Teachers' Day 2026 — TCET</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       PETAL CANVAS (behind everything)
+  ═══════════════════════════════════════════ -->
+  <canvas id="petalCanvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════════════════════════════
+       MUSIC CONTROL
+  ═══════════════════════════════════════════ -->
+  <button class="music-btn" id="musicBtn" aria-label="Toggle background music" title="Toggle Music">
+    <span class="music-icon" id="musicIcon">♪</span>
+  </button>
+
+  <!-- ═══════════════════════════════════════════
+       LANDING SCREEN
+  ═══════════════════════════════════════════ -->
+  <section class="landing-screen" id="landingScreen" role="main">
+
+    <!-- Top decorative border -->
+    <div class="deco-bar top-bar" aria-hidden="true">
+      <span class="deco-dot"></span>
+      <span class="deco-line"></span>
+      <span class="deco-lotus">❁</span>
+      <span class="deco-line"></span>
+      <span class="deco-dot"></span>
+    </div>
+
+    <!-- Mandala watermark -->
+    <div class="mandala-bg" aria-hidden="true">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="mandala-svg">
+        <g transform="translate(200,200)">
+          <!-- Outer ring petals -->
+          <g class="m-ring m-ring-1">
+            <ellipse rx="8" ry="30" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+            <ellipse rx="8" ry="30" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5" transform="rotate(30)"/>
+            <ellipse rx="8" ry="30" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5" transform="rotate(60)"/>
+            <ellipse rx="8" ry="30" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5" transform="rotate(90)"/>
+            <ellipse rx="8" ry="30" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5" transform="rotate(120)"/>
+            <ellipse rx="8" ry="30" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5" transform="rotate(150)"/>
+          </g>
+          <!-- Mid ring -->
+          <g class="m-ring m-ring-2">
+            <circle r="60" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.3" stroke-dasharray="4 6"/>
+            <circle r="90" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.2" stroke-dasharray="2 8"/>
+            <circle r="120" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.15" stroke-dasharray="6 10"/>
+            <circle r="155" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.12" stroke-dasharray="3 12"/>
+          </g>
+          <!-- Inner lotus petals -->
+          <g class="m-ring m-ring-3">
+            <ellipse rx="5" ry="18" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.6" transform="translate(0,-45)"/>
+            <ellipse rx="5" ry="18" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.6" transform="rotate(45) translate(0,-45)"/>
+            <ellipse rx="5" ry="18" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.6" transform="rotate(90) translate(0,-45)"/>
+            <ellipse rx="5" ry="18" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.6" transform="rotate(135) translate(0,-45)"/>
+            <ellipse rx="5" ry="18" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.6" transform="rotate(180) translate(0,-45)"/>
+            <ellipse rx="5" ry="18" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.6" transform="rotate(225) translate(0,-45)"/>
+            <ellipse rx="5" ry="18" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.6" transform="rotate(270) translate(0,-45)"/>
+            <ellipse rx="5" ry="18" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.6" transform="rotate(315) translate(0,-45)"/>
+          </g>
+          <!-- Centre dot -->
+          <circle r="6" fill="currentColor" opacity="0.3"/>
+          <circle r="3" fill="currentColor" opacity="0.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="landing-content">
+      <p class="landing-pretext">A Celebration of Those Who Inspire Us</p>
+
+      <div class="divider-ornament" aria-hidden="true">
+        <span class="orn-line"></span>
+        <span class="orn-icon">🌸</span>
+        <span class="orn-line"></span>
+      </div>
+
+      <h1 class="landing-title">
+        <span class="title-line">Teachers' Day</span>
+        <span class="title-year">Celebration 2026</span>
+      </h1>
+
+      <div class="divider-ornament" aria-hidden="true">
+        <span class="orn-line"></span>
+        <span class="orn-icon">🌸</span>
+        <span class="orn-line"></span>
+      </div>
+
+      <p class="landing-subtitle">
+        "A small celebration for the people<br/>who make a big difference."
+      </p>
+
+      <button class="open-btn" id="openInvitationBtn" aria-label="Open the full invitation">
+        <span class="btn-shimmer"></span>
+        <span class="btn-text">✨ Open Invitation</span>
+      </button>
+
+      <p class="landing-college">Thakur College of Engineering &amp; Technology</p>
+    </div>
+
+    <!-- Bottom decorative border -->
+    <div class="deco-bar bottom-bar" aria-hidden="true">
+      <span class="deco-dot"></span>
+      <span class="deco-line"></span>
+      <span class="deco-lotus">❁</span>
+      <span class="deco-line"></span>
+      <span class="deco-dot"></span>
+    </div>
+
+  </section><!-- /landing-screen -->
+
+
+  <!-- ═══════════════════════════════════════════
+       INVITATION CARD (hidden until button click)
+  ═══════════════════════════════════════════ -->
+  <section class="invitation-wrap" id="invitationWrap" aria-hidden="true">
+    <div class="invitation-card" id="invitationCard" role="region" aria-label="Invitation Details">
+
+      <!-- Card header ornament -->
+      <div class="card-header-orn" aria-hidden="true">
+        <span class="orn-line"></span>
+        <span class="orn-diya">🪔</span>
+        <span class="orn-line"></span>
+        <span class="orn-diya">🪔</span>
+        <span class="orn-line"></span>
+      </div>
+
+      <!-- Institution badge -->
+      <div class="institution-badge">
+        <p class="institution-name">Thakur College of Engineering &amp; Technology</p>
+        <p class="institution-sub">Mumbai · Affiliated to Mumbai University</p>
+      </div>
+
+      <!-- Salutation -->
+      <div class="salutation-block">
+        <p class="salutation-dear">Dear Sir / Ma'am,</p>
+        <p class="salutation-body">
+          Your guidance, support and encouragement have shaped our journey in countless ways.
+          This Teachers' Day, we would love to celebrate and appreciate you.
+        </p>
+      </div>
+
+      <!-- Event details -->
+      <div class="event-details">
+        <div class="detail-row">
+          <span class="detail-icon" aria-hidden="true">📅</span>
+          <div class="detail-text">
+            <span class="detail-label">Date</span>
+            <span class="detail-value">7th September 2026</span>
+          </div>
+        </div>
+        <div class="detail-divider" aria-hidden="true"></div>
+        <div class="detail-row">
+          <span class="detail-icon" aria-hidden="true">📍</span>
+          <div class="detail-text">
+            <span class="detail-label">Venue</span>
+            <span class="detail-value">TCET Multipurpose Hall</span>
+          </div>
+        </div>
+        <div class="detail-divider" aria-hidden="true"></div>
+        <div class="detail-row">
+          <span class="detail-icon" aria-hidden="true">🎭</span>
+          <div class="detail-text">
+            <span class="detail-label">Dress Theme</span>
+            <span class="detail-value">Traditional</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Presence quote -->
+      <div class="presence-quote">
+        <p>Your presence will make our celebration even more special.</p>
+      </div>
+
+      <!-- Floral divider -->
+      <div class="floral-divider" aria-hidden="true">
+        <span class="fd-line"></span>
+        <span class="fd-flower">✿</span>
+        <span class="fd-dot">·</span>
+        <span class="fd-flower">✿</span>
+        <span class="fd-dot">·</span>
+        <span class="fd-flower">✿</span>
+        <span class="fd-line"></span>
+      </div>
+
+      <!-- Closing / RSVP section -->
+      <div class="closing-section">
+        <p class="closing-headline">We look forward to celebrating with you!</p>
+        <p class="closing-body">
+          With warmth and gratitude,<br/>
+          <strong>The Student Council &amp; Organizing Committee</strong><br/>
+          <em>Thakur College of Engineering &amp; Technology</em>
+        </p>
+      </div>
+
+      <!-- Diya row decorative footer -->
+      <div class="card-footer-orn" aria-hidden="true">
+        <span class="orn-line"></span>
+        <span class="footer-motif">🌸</span>
+        <span class="orn-line"></span>
+        <span class="footer-motif">🪔</span>
+        <span class="orn-line"></span>
+        <span class="footer-motif">🌸</span>
+        <span class="orn-line"></span>
+      </div>
+
+      <!-- Back button -->
+      <button class="back-btn" id="backBtn" aria-label="Go back to landing screen">
+        ← Back
+      </button>
+
+    </div><!-- /invitation-card -->
+  </section><!-- /invitation-wrap -->
+
+
+  <script src="script.js"></script>
+</body>
+</html>

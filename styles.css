@@ -1,0 +1,708 @@
+/* ═══════════════════════════════════════════════════
+   TEACHERS' DAY 2026 — TCET
+   Traditional Indian Premium Invitation Theme
+═══════════════════════════════════════════════════ */
+
+/* ─── CSS Custom Properties ─────────────────────── */
+:root {
+  /* Warm traditional palette */
+  --gold:        #C9974A;
+  --gold-light:  #E8C07D;
+  --gold-pale:   #F5E6C8;
+  --gold-deep:   #8B6320;
+  --maroon:      #6B1A1A;
+  --maroon-soft: #8B2E2E;
+  --cream:       #FDF6E9;
+  --cream-deep:  #F5E9D0;
+  --ivory:       #FFFBF2;
+  --warm-brown:  #4A2C0A;
+  --text-main:   #2D1810;
+  --text-sub:    #5C3A1E;
+  --text-light:  #8B6040;
+
+  /* Gradients */
+  --bg-gradient: radial-gradient(ellipse at 20% 0%, #3D0C0C 0%, #1A0808 40%, #0D0404 100%);
+  --card-gradient: linear-gradient(160deg, #FFFBF2 0%, #FDF0D5 50%, #F9E8C0 100%);
+  --gold-gradient: linear-gradient(135deg, #C9974A 0%, #E8C07D 40%, #C9974A 70%, #A07030 100%);
+
+  /* Typography */
+  --font-heading: 'Cinzel', 'Georgia', serif;
+  --font-body:    'Cormorant Garamond', 'Palatino Linotype', serif;
+  --font-ui:      'Lato', 'Arial', sans-serif;
+
+  /* Spacing */
+  --radius-card:  18px;
+  --radius-btn:   50px;
+}
+
+/* ─── Reset & Base ───────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg-gradient);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Petal Canvas ───────────────────────────────── */
+#petalCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Music Button ───────────────────────────────── */
+.music-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201, 151, 74, 0.6);
+  background: rgba(13, 4, 4, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.music-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201, 151, 74, 0.2);
+  transform: scale(1.08);
+}
+
+.music-btn.playing .music-icon {
+  animation: musicPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.2); opacity: 0.7; }
+}
+
+/* ─── Decorative Bar (top/bottom of landing) ────── */
+.deco-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  color: var(--gold);
+}
+
+.deco-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+.deco-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+
+.deco-lotus {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  color: var(--gold-light);
+}
+
+.top-bar  { padding-top: 20px; }
+.bottom-bar { padding-bottom: 20px; }
+
+/* ═══════════════════════════════════════════════════
+   LANDING SCREEN
+═══════════════════════════════════════════════════ */
+.landing-screen {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  /* Initial state: visible */
+  opacity: 1;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.landing-screen.hide-out {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+}
+
+/* Mandala watermark */
+.mandala-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(500px, 90vw);
+  height: min(500px, 90vw);
+  pointer-events: none;
+  color: var(--gold);
+  opacity: 0.08;
+  animation: mandalaRotate 60s linear infinite;
+}
+
+.mandala-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes mandalaRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Landing content */
+.landing-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 10px 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Pre-text */
+.landing-pretext {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 0.3s forwards;
+  margin-bottom: 18px;
+}
+
+/* Ornament divider */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+  margin: 8px auto 16px;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 0.5s forwards;
+}
+
+.orn-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.7;
+}
+
+.orn-icon {
+  font-size: 1rem;
+  opacity: 0.9;
+  animation: floatY 3s ease-in-out infinite;
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* Title */
+.landing-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 0.7s forwards;
+  margin-bottom: 10px;
+}
+
+.title-line {
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 7vw, 3.8rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  line-height: 1.1;
+}
+
+.title-year {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: var(--gold-light);
+  opacity: 0.9;
+  -webkit-text-fill-color: var(--gold-light);
+}
+
+/* Subtitle */
+.landing-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  font-weight: 300;
+  color: rgba(245, 230, 200, 0.85);
+  line-height: 1.65;
+  margin: 16px 0 36px;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 0.9s forwards;
+  max-width: 360px;
+}
+
+/* Open Invitation Button */
+.open-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 42px;
+  border: 1.5px solid var(--gold);
+  border-radius: var(--radius-btn);
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 1.1s forwards;
+  box-shadow: 0 0 22px rgba(201, 151, 74, 0.25), inset 0 0 0 0 var(--gold);
+}
+
+.open-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 30px rgba(201, 151, 74, 0.4), 0 0 0 1px var(--gold-light);
+}
+
+.open-btn:active {
+  transform: scale(0.98);
+}
+
+.btn-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.btn-text {
+  font-family: var(--font-heading);
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--gold-light);
+  position: relative;
+  z-index: 1;
+}
+
+/* College name */
+.landing-college {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+  letter-spacing: 0.18em;
+  color: rgba(201, 151, 74, 0.5);
+  text-transform: uppercase;
+  margin-top: 30px;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 1.3s forwards;
+}
+
+/* ═══════════════════════════════════════════════════
+   INVITATION WRAPPER & CARD
+═══════════════════════════════════════════════════ */
+.invitation-wrap {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 30px 16px 60px;
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.invitation-wrap.visible {
+  display: flex;
+}
+
+.invitation-wrap.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.invitation-card {
+  background: var(--card-gradient);
+  border-radius: var(--radius-card);
+  max-width: 560px;
+  width: 100%;
+  padding: clamp(24px, 5vw, 52px) clamp(22px, 5vw, 48px) clamp(24px, 4vw, 44px);
+  box-shadow:
+    0 0 0 1px rgba(201, 151, 74, 0.3),
+    0 0 0 3px rgba(201, 151, 74, 0.08),
+    0 20px 60px rgba(0,0,0,0.5),
+    0 8px 25px rgba(0,0,0,0.35);
+  border: 1px solid rgba(201, 151, 74, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Corner ornaments via pseudo-elements */
+.invitation-card::before,
+.invitation-card::after {
+  content: '❧';
+  position: absolute;
+  font-size: 2.5rem;
+  color: var(--gold);
+  opacity: 0.12;
+  line-height: 1;
+}
+.invitation-card::before { top: 12px; left: 16px; transform: scaleX(-1); }
+.invitation-card::after  { bottom: 12px; right: 16px; }
+
+/* Card header ornament */
+.card-header-orn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  color: var(--gold);
+}
+
+.orn-diya { font-size: 1.1rem; }
+
+/* Institution badge */
+.institution-badge {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(201, 151, 74, 0.2);
+}
+
+.institution-name {
+  font-family: var(--font-heading);
+  font-size: clamp(0.75rem, 2.2vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--maroon);
+  text-transform: uppercase;
+}
+
+.institution-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 1.8vw, 0.78rem);
+  color: var(--text-light);
+  margin-top: 4px;
+  letter-spacing: 0.06em;
+}
+
+/* Salutation */
+.salutation-block {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.salutation-dear {
+  font-family: var(--font-heading);
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  font-weight: 500;
+  color: var(--maroon);
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+
+.salutation-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-sub);
+  font-style: italic;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* Event Details Block */
+.event-details {
+  background: linear-gradient(135deg, rgba(201,151,74,0.06) 0%, rgba(139,42,46,0.04) 100%);
+  border: 1px solid rgba(201, 151, 74, 0.22);
+  border-radius: 12px;
+  padding: clamp(18px, 4vw, 26px) clamp(16px, 3.5vw, 28px);
+  margin-bottom: 28px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.detail-icon {
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+}
+
+.detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.detail-label {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+.detail-value {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  font-weight: 500;
+  color: var(--maroon);
+  letter-spacing: 0.02em;
+}
+
+.detail-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,151,74,0.25), transparent);
+  margin: 4px 0;
+}
+
+/* Presence quote */
+.presence-quote {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.presence-quote p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1rem, 2.8vw, 1.15rem);
+  font-weight: 400;
+  color: var(--gold-deep);
+  line-height: 1.6;
+  position: relative;
+  padding: 0 10px;
+}
+
+.presence-quote p::before { content: '\201C'; }
+.presence-quote p::after  { content: '\201D'; }
+
+/* Floral divider */
+.floral-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 26px;
+  color: var(--gold);
+}
+
+.fd-line {
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+
+.fd-flower { font-size: 0.85rem; opacity: 0.75; }
+.fd-dot    { font-size: 0.6rem;  opacity: 0.5; }
+
+/* Closing section */
+.closing-section {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.closing-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  font-weight: 500;
+  color: var(--maroon);
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { color: var(--maroon); }
+  50%       { color: var(--maroon-soft); }
+}
+
+.closing-body {
+  font-family: var(--font-body);
+  font-size: clamp(0.88rem, 2.4vw, 1rem);
+  line-height: 1.8;
+  color: var(--text-sub);
+}
+
+.closing-body strong {
+  font-weight: 600;
+  color: var(--warm-brown);
+}
+
+.closing-body em {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* Card footer ornament */
+.card-footer-orn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+
+.footer-motif { font-size: 0.85rem; opacity: 0.7; }
+
+/* Back button */
+.back-btn {
+  display: block;
+  margin: 0 auto;
+  background: none;
+  border: 1px solid rgba(107, 26, 26, 0.3);
+  color: var(--maroon-soft);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  padding: 8px 22px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.back-btn:hover {
+  background: rgba(107, 26, 26, 0.08);
+  color: var(--maroon);
+  border-color: var(--maroon-soft);
+}
+
+/* ─── Keyframe helpers ───────────────────────────── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Card stagger animations on reveal ─────────── */
+.invitation-card .institution-badge,
+.invitation-card .salutation-block,
+.invitation-card .event-details,
+.invitation-card .presence-quote,
+.invitation-card .floral-divider,
+.invitation-card .closing-section {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.invitation-card.animate .institution-badge { opacity: 1; transform: none; transition-delay: 0.1s; }
+.invitation-card.animate .salutation-block  { opacity: 1; transform: none; transition-delay: 0.25s; }
+.invitation-card.animate .event-details     { opacity: 1; transform: none; transition-delay: 0.4s; }
+.invitation-card.animate .presence-quote    { opacity: 1; transform: none; transition-delay: 0.55s; }
+.invitation-card.animate .floral-divider    { opacity: 1; transform: none; transition-delay: 0.65s; }
+.invitation-card.animate .closing-section   { opacity: 1; transform: none; transition-delay: 0.75s; }
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — MOBILE FIRST
+═══════════════════════════════════════════════════ */
+
+/* Small phones */
+@media (max-width: 380px) {
+  .landing-title .title-line { font-size: 1.75rem; }
+  .title-year                { font-size: 0.9rem; letter-spacing: 0.14em; }
+  .landing-subtitle          { font-size: 0.95rem; }
+  .open-btn                  { padding: 12px 32px; }
+  .btn-text                  { font-size: 0.8rem; }
+}
+
+/* Tablets and small laptops */
+@media (min-width: 600px) {
+  .invitation-card {
+    margin: 10px auto;
+  }
+}
+
+/* Large screens */
+@media (min-width: 900px) {
+  .landing-content {
+    padding: 30px 10px 50px;
+  }
+  .invitation-wrap {
+    padding: 50px 20px 80px;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #petalCanvas { display: none; }
+}
