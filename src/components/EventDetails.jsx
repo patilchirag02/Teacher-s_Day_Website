@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './EventDetails.css'
 
 const details = [
-  { icon: '📅', label: 'Date',  value: '7 September 2026', sub: 'Sunday' },
+  { icon: '📅', label: 'Date',  value: '7 September 2026', sub: 'Monday' },
   { icon: '⏰', label: 'Time',  value: '2:00 PM Onwards', sub: 'Be there on time!' },
   { icon: '📍', label: 'Venue', value: 'TCET Multipurpose Hall', sub: '2nd Floor' },
 ]
