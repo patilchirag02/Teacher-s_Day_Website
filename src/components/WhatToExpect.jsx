@@ -7,8 +7,7 @@ const agenda = [
   { icon: '🎲', title: 'Fun Games',         desc: 'Light-hearted games to bring joy and laughter.' },
   { icon: '🖊️', title: 'Shayari & Poetry', desc: 'Heartfelt verses penned by your students.' },
   { icon: '📸', title: 'Photoshoot',        desc: 'Capture the memories with a curated photo session.' },
-  { icon: '🌸', title: 'Photo Booth',       desc: 'Strike a pose at our themed photo booth!', optional: true },
-  { icon: '💛', title: 'Wall of Gratitude', desc: 'Messages of thanks, love, and appreciation.', optional: true },
+
 ]
 
 export default function WhatToExpect({ onNext }) {
