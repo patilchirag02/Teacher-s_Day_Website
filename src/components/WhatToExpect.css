@@ -1,0 +1,181 @@
+.expect-screen {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 1.25rem 3rem;
+  overflow-y: auto;
+  background: radial-gradient(ellipse 80% 60% at 50% 60%, #200d40 0%, #1a0a2e 50%, #0d0b1e 100%);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+.expect-screen.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.expect-inner {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  text-align: center;
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 0.3rem 1.2rem;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 60px;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+
+.expect-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 6.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cream);
+}
+.expect-heading em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 300px;
+}
+.gold-divider span:first-child,
+.gold-divider span:last-child {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  display: block;
+}
+.gold-divider span:nth-child(2) { font-size: 1.1rem; }
+
+/* Agenda list */
+.agenda-list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.agenda-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.14);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  text-align: left;
+  animation: fadeInUp 0.6s var(--ease-out-expo) both;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  backdrop-filter: blur(6px);
+}
+.agenda-item:hover {
+  background: rgba(201,168,76,0.06);
+  border-color: rgba(201,168,76,0.35);
+  transform: translateX(4px);
+}
+.agenda-item.optional {
+  opacity: 0.75;
+  border-style: dashed;
+}
+.agenda-item.optional:hover {
+  opacity: 1;
+}
+
+.agenda-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  filter: drop-shadow(0 2px 4px rgba(201,168,76,0.2));
+}
+
+.agenda-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.agenda-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  border-radius: 60px;
+  padding: 0.1rem 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+.agenda-desc {
+  font-size: 0.82rem;
+  color: rgba(253,246,227,0.5);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+.expect-note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(253,246,227,0.55);
+}
+
+/* Next button */
+.next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  border-radius: 60px;
+  color: var(--gold-light);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.next-btn:hover,
+.next-btn:focus-visible {
+  background: var(--gold);
+  color: var(--text-main);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201,168,76,0.4);
+  outline: none;
+}
+.next-btn .arrow { transition: transform 0.2s; }
+.next-btn:hover .arrow { transform: translateX(4px); }

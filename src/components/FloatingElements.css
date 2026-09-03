@@ -1,0 +1,22 @@
+.floating-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: var(--gold-light);
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.petal {
+  position: absolute;
+  top: -5%;
+  animation: petal-fall linear infinite;
+  user-select: none;
+  filter: blur(0.3px);
+}
