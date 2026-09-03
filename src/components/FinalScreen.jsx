@@ -60,7 +60,7 @@ export default function FinalScreen() {
           <div className="recap-divider">·</div>
           <div className="recap-item">
             <span>📍</span>
-            <span>TCSC Multipurpose Hall, 2nd Floor</span>
+            <span>TCET Multipurpose Hall, 2nd Floor</span>
           </div>
         </div>
 
