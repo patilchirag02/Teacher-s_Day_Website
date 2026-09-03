@@ -42,7 +42,7 @@ export default function InvitationReveal({ onNext }) {
             </div>
 
             <h2 className="letter-heading">
-              Dear <em>Teacher</em>,
+              Dear <em>TGBS Family</em>,
             </h2>
 
             <p className="letter-body">
@@ -50,16 +50,21 @@ export default function InvitationReveal({ onNext }) {
             </p>
 
             <p className="letter-message">
-              You are not just an educator — you are the compass that guides us,
-              the light that dispels our doubts, and the steady hand that shapes
-              our futures. Every lesson you taught us, every moment you believed
-              in us, has left a mark that time will never erase.
+              You are not just the people who guide and support us — you are the heart
+              of our learning journey. Whether through teaching, guiding, assisting,
+              managing, or simply being there when we need you, each one of you has
+              contributed to making our time at TGBS meaningful.
             </p>
 
             <p className="letter-message">
-              On this special day, we come together to celebrate the extraordinary
-              person you are — and to say, from the bottom of our hearts,
-              <em> thank you</em>.
+              Every lesson you taught us, every moment you supported us, and every
+              little effort you made has left a mark that time will never erase.
+            </p>
+
+            <p className="letter-message">
+              On this special day, we come together to celebrate{' '}
+              <strong>each and every member of the TGBS family</strong> and to say,
+              from the bottom of our hearts, <em>thank you</em>.
             </p>
 
             <div className="letter-divider" aria-hidden="true">
